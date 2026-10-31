@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart AI Hub</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  padding:20px;
+  font-family:system-ui,Arial;
+  background:#0b1020;
+  color:#f5f7ff;
+}
+header{
+  padding:22px;
+  border-radius:22px;
+  background:linear-gradient(135deg,#6547ef,#168bd8);
+}
+h1{font-size:25px;margin:0 0 8px}
+p{color:#cbd5e1;line-height:1.7}
+h2{font-size:18px;margin-top:26px}
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.card{
+  background:#171f35;
+  border:1px solid #293552;
+  border-radius:18px;
+  padding:17px;
+  min-height:120px;
+}
+.icon{font-size:28px}
+.card h3{font-size:15px;margin:12px 0 5px}
+.card p{font-size:12px;margin:0;color:#aebbd3}
+button{
+  width:100%;
+  padding:14px;
+  border:0;
+  border-radius:14px;
+  background:#7658ff;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  margin-top:20px;
+}
+.note{
+  font-size:12px;
+  color:#9ba9c4;
+  text-align:center;
+  margin-top:18px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🤖 Smart AI Hub</h1>
+  <p id="welcome">مرحبًا بك في مركز الذكاء الاصطناعي</p>
+  <p>خدمات ذكية في مكان واحد، بواجهة عربية سهلة.</p>
+</header>
+
+<h2>✨ خدماتنا</h2>
+
+<div class="grid">
+  <div class="card">
+    <div class="icon">📝</div>
+    <h3>تحليل النصوص</h3>
+    <p>تلخيص النصوص وفهمها.</p>
+  </div>
+
+  <div class="card">
+    <div class="icon">🖼️</div>
+    <h3>تحليل الصور</h3>
+    <p>اكتشف محتوى صورك.</p>
+  </div>
+
+  <div class="card">
+    <div class="icon">📄</div>
+    <h3>تحليل الملفات</h3>
+    <p>مساعدة في قراءة الملفات.</p>
+  </div>
+
+  <div class="card">
+    <div class="icon">🎬</div>
+    <h3>البحث عن الفيديوهات</h3>
+    <p>اعثر على فيديوهات YouTube.</p>
+  </div>
+
+  <div class="card">
+    <div class="icon">💡</div>
+    <h3>المساعد الذكي</h3>
+    <p>اسأل الذكاء الاصطناعي.</p>
+  </div>
+
+  <div class="card">
+    <div class="icon">⚡</div>
+    <h3>سهل وسريع</h3>
+    <p>خدماتك في واجهة واحدة.</p>
+  </div>
+</div>
+
+<button onclick="openBot()">💬 الانتقال إلى البوت</button>
+
+<div class="note">Smart AI Hub · مساعدك الذكي</div>
+
+<script>
+const tg = window.Telegram?.WebApp;
+
+if(tg){
+  tg.ready();
+  tg.expand();
+
+  const name = tg.initDataUnsafe?.user?.first_name;
+  if(name){
+    document.getElementById("welcome").textContent =
+      "أهلًا " + name + " 👋";
+  }
+}
+
+function openBot(){
+  if(tg){
+    tg.close();
+  }else{
+    alert("افتح هذه الواجهة من خلال Telegram.");
+  }
+}
+</script>
+
+</body>
+</html>
